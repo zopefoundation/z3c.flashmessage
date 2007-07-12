@@ -1,0 +1,21 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   i18n_domain="zope"
+   >
+
+  <!-- This file is the equivalent of site.zcml and it is -->
+  <!-- used for functional testing setup -->
+  <include package="zope.app.zcmlfiles" />
+  <include package="zope.app.session" />
+
+  <utility
+    factory="zope.app.session.http.CookieClientIdManager"
+    provides="zope.app.session.interfaces.IClientIdManager"
+    />
+
+  <utility
+    factory="zope.app.session.session.RAMSessionDataContainer"
+    provides="zope.app.session.interfaces.ISessionDataContainer"
+    />
+
+</configure>

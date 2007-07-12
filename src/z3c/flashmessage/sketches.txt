@@ -1,0 +1,90 @@
+==============
+Flash messages
+==============
+
+...
+
+
+Sending a message to the current user
+=====================================
+
+To send a message to the current user, you can use the session-based message
+source. Let's set one up:
+
+>>> from z3c.flashmessage.session import SessionMessageSource
+>>> source = SessionMessageSource()
+
+>>> source.send(u'The world will come to an end in 40 seconds!')
+
+Then, the use can receive the message:
+
+>>> m = list(source.receive())
+>>> m
+[<Message object at 0x...>]
+>>> m[0].message
+u'The world will come to an end in 40 seconds!')
+>>> m[0].type
+'message'
+
+Calling `receive()` another time, will not return any messages, as they get
+removed, when receiving:
+
+>>> messages.receive()
+[]
+
+
+Display messages in categories
+==============================
+
+We allow to distinguish between different kinds of messages. The default kind
+is 'message':
+
+>>> messages.send('Hey, user!', type='error')
+
+>>> m = messages.receive()
+>>> m
+[<Message object at 0x...>]
+
+Looking at the object, we can get the message and its kind:
+
+>>> m[0].message
+u'Hey, user!'
+>>> m[0].type
+'error'
+
+
+Persistent messages
+===================
+
+
+
+
+Using message objects
+=====================
+
+More generally, we could construct message objects instead of passing strings
+around (more object-oriented instead of data-oriented):
+
+>>> m = Message(u"Hey, user!", type="error")
+
+
+This also allows for more specialized messages, like messages that time out
+after a certain time, e.g
+
+
+
+
+
+
+getUtility(IMessageSource, 'session').send('Boooh')
+
+getUtility(IMessageSource, 'global').send('Boooh')
+
+
+
+
+
+getUtility(IMessageSource, 'global').receive()
+
+
+- timeout for messages
