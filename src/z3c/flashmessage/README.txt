@@ -11,7 +11,7 @@ Sending a message to the current user
 To send a message to the current user, you can use the session-based message
 source. Let's set one up:
 
->>> from z3c.flashmessage.source import SessionMessageSource
+>>> from z3c.flashmessage.sources import SessionMessageSource
 >>> source = SessionMessageSource()
 
 >>> source.send(u'The world will come to an end in 40 seconds!')
@@ -59,7 +59,7 @@ utilities. Let's set up a session message source as a utility:
 >>> provideUtility(source)
 >>> source.send(u'Test!')
 
->>> from z3c.flashmessage.source import RAMMessageSource
+>>> from z3c.flashmessage.sources import RAMMessageSource
 >>> source2 = RAMMessageSource()
 >>> provideUtility(source2, name='other')
 >>> source2.send(u'Test 2!')
