@@ -38,7 +38,7 @@ class IMessageSource(zope.interface.Interface):
 
         """
 
-    def receive(type=None):
+    def list(type=None):
         """Return all messages of the given type from this source.
 
         If type is None, all messages will be returned.
@@ -49,3 +49,17 @@ class IMessageSource(zope.interface.Interface):
 
     def delete(message):
         """Remove the given message from the source."""
+
+
+class IMessageReceiver(zope.interface.Interface):
+    """Receive messages.
+
+    Depending on the implementation, this receives messages from various
+    sources.
+
+    """
+
+    def receive(type=None):
+        """Return all messages of the given type relevant to the current
+        request.
+        """

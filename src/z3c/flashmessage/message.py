@@ -9,11 +9,10 @@ import zope.interface
 
 import z3c.flashmessage.interfaces
 
-
-class Message(persistent.Persistent):
+class BaseMessage(persistent.Persistent):
     """A message that is displayed to the user.
 
-    This is the default message which will delete itself after being received.
+    An (abstract) base class.
 
     """
 
@@ -23,6 +22,14 @@ class Message(persistent.Persistent):
         self.message = message
         self.type = type
 
+
+class Message(BaseMessage):
+    """A message that is displayed to the user.
+
+    This message will delete itself after being received.
+
+    """
+
     def prepare(self, source):
         """Prepare for being received.
 
@@ -30,3 +37,10 @@ class Message(persistent.Persistent):
 
         """
         source.delete(self)
+
+
+class PersistentMessage(BaseMessage):
+    """A message that doesn't delete itself when being received."""
+
+    def prepare(self, source):
+        pass

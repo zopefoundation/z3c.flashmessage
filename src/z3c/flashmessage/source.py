@@ -14,18 +14,15 @@ import z3c.flashmessage.interfaces
 import z3c.flashmessage.message
 
 
-class SessionMessageSource(object):
+class ListBasedMessageSource(object):
+    """An (abstract) base class that stores messages
+    in a list.
+
+    Sub-classes have to define the attribute `_storage`.
+
+    """
 
     zope.interface.implements(z3c.flashmessage.interfaces.IMessageSource)
-
-    @property
-    def _storage(self):
-        request = zope.security.management.getInteraction().participations[0]
-        session = zope.app.session.interfaces.ISession(
-            request)['z3c.flashmessage']
-        messages = session.setdefault('messages',
-                                      persistent.list.PersistentList())
-        return messages
 
     def send(self, message, type=u"message"):
         """Send a message to this source."""
@@ -36,12 +33,31 @@ class SessionMessageSource(object):
         message.source = self
         self._storage.append(message)
 
-    def receive(self, type=None):
+    def list(self, type=None):
         """Return all messages of the given type from this source."""
-        for message in self._storage:
-            message.prepare(self)
-            yield message
+        return list(self._storage)
 
     def delete(self, message):
         """Remove the given message from the source."""
         self._storage.remove(message)
+
+
+class SessionMessageSource(ListBasedMessageSource):
+
+    @property
+    def _storage(self):
+        request = zope.security.management.getInteraction().participations[0]
+        session = zope.app.session.interfaces.ISession(
+            request)['z3c.flashmessage']
+        messages = session.setdefault('messages',
+                                      persistent.list.PersistentList())
+        return messages
+
+
+class RAMMessageSource(ListBasedMessageSource):
+
+    zope.interface.implements(z3c.flashmessage.interfaces.IMessageSource)
+
+    def __init__(self):
+        super(RAMMessageSource, self).__init__()
+        self._storage = []
