@@ -87,3 +87,15 @@ read:
 Filtering message types
 =======================
 
+When listing messages from a message source, we can restrict which messages we
+see. If we don't give a type, then all messages are returned. The default type
+of a message is `message`:
+
+>>> source3 = RAMMessageSource()
+>>> source3.send(u'Test 2!')
+>>> list(source3.list())
+[<z3c.flashmessage.message.Message object at 0x...>]
+>>> list(source3.list('message'))
+[<z3c.flashmessage.message.Message object at 0x...>]
+>>> list(source3.list('somethingelse'))
+[]

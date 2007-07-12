@@ -35,7 +35,9 @@ class ListBasedMessageSource(object):
 
     def list(self, type=None):
         """Return all messages of the given type from this source."""
-        return list(self._storage)
+        for message in self._storage:
+            if type is None or message.type == type:
+                yield message
 
     def delete(self, message):
         """Remove the given message from the source."""
