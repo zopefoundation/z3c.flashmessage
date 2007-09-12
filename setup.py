@@ -1,4 +1,6 @@
+import os.path
 from setuptools import setup, find_packages
+
 
 setup(
     name = "z3c.flashmessage",
@@ -9,6 +11,7 @@ setup(
     long_description=file(os.path.join(
         os.path.dirname(__file__), 'src', 'z3c', 'flashmessage',
         'README.txt')).read(),
+    url = 'http://pypi.python.org/pypi/z3c.flashmessage/',
     license = "ZPL 2.1",
     keywords = "zope3",
     zip_safe=False,
