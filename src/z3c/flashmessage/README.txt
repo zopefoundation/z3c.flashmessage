@@ -63,18 +63,21 @@ utilities. Let's set up a session message source as a utility:
 >>> source2 = RAMMessageSource()
 >>> provideUtility(source2, name='other')
 >>> source2.send(u'Test 2!')
+>>> source2.send(u'Test 3!')
 
 >>> from z3c.flashmessage.receiver import GlobalMessageReceiver
 >>> receiver = GlobalMessageReceiver()
 >>> m = list(receiver.receive())
 >>> len(m)
-3
+4
 >>> m[0].message
 u'I will stay forever!'
 >>> m[1].message
 u'Test!'
 >>> m[2].message
 u'Test 2!'
+>>> m[3].message
+u'Test 3!'
 
 After the receiver handed out the messages, they are gone from the
 sources, because the receiver notifies the messages that they were
@@ -99,3 +102,14 @@ of a message is `message`:
 [<z3c.flashmessage.message.Message object at 0x...>]
 >>> list(source3.list('somethingelse'))
 []
+
+
+
+Changes
+=======
+
+1.0b2
+-----
+
+* Bugfix: When there was more than one message in a source not all messages
+  would be returned by the receiver.

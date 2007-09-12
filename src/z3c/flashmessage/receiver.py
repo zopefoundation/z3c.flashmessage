@@ -17,6 +17,9 @@ class GlobalMessageReceiver(object):
         sources = zope.component.getAllUtilitiesRegisteredFor(
             z3c.flashmessage.interfaces.IMessageSource)
         for source in sources:
-            for message in source.list(type):
+            # We need to create a list here, because message.prepare might
+            # modify the original source list stop the iteration before
+            # all items where consumed:
+            for message in list(source.list(type)):
                 message.prepare(source)
                 yield message
