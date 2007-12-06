@@ -6,7 +6,7 @@
 
 import zope.interface
 
-import zope.app.session.interfaces
+import zope.session.interfaces
 
 import persistent.list
 
@@ -49,7 +49,7 @@ class SessionMessageSource(ListBasedMessageSource):
     @property
     def _storage(self):
         request = zope.security.management.getInteraction().participations[0]
-        session = zope.app.session.interfaces.ISession(
+        session = zope.session.interfaces.ISession(
             request)['z3c.flashmessage']
         messages = session.setdefault('messages',
                                       persistent.list.PersistentList())

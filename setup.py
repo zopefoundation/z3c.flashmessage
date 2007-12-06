@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "z3c.flashmessage",
-    version = "1.0b2",
+    version = "1.0dev",
     author = "Jasper Op de Coul, Christian Theune",
     author_email = "jasper@infrae.com, ct@gocept.com",
     description = "A package for sending `flash messages` to users.",
@@ -23,7 +23,7 @@ setup(
                         'ZODB3',
                         'zope.interface',
                         'zope.component',
-                        'zope.app.session',
+                        'zope.session',
                         'zope.security'],
     extras_require=dict(test=['zope.app.testing',
                               'zope.app.zcmlfiles'])
