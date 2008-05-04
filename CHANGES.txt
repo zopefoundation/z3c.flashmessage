@@ -1,11 +1,17 @@
+
 =======
 CHANGES
 =======
 
-Version 1.0 (2007-12-06)
-------------------------
+1.1 (unreleased)
+----------------
 
-- Updated dependency to zope.session instead of zope.app.session to get rid of
+* ...
+
+1.0 (2007-12-06)
+----------------
+
+* Updated dependency to zope.session instead of zope.app.session to get rid of
   deprecation warnings.
 
 
