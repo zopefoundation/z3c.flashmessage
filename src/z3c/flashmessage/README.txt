@@ -104,6 +104,31 @@ of a message is `message`:
 []
 
 
+Performance and Scalability Issues
+==================================
+
+By default, messages are stored persistently in the ZODB using
+zope.session.  This can be a significant scalability problem; see
+design.txt in zope.session for more information.  You should think
+twice before using flashmessages for unauthenticated users, as this
+can easily lead to unnecessary database growth on anonymous page
+views, and conflict errors under heavy load.
+
+One solution is to configure your system to store flashmessages in
+RAM. You would do this by configuring a utility providing
+z3c.flashmessages.interfaces.IMessageSource with the factory set to
+z3c.flashmessages.sources.RAMMessageSource, and a specific name if
+your application expects one.
+
+RAM storage is much faster and removes the persistence issues
+described above, but there are two new problems.  First, be aware that
+if your server process restarts for any reason, all unread
+flashmessages will be lost.  Second, if you cluster your application
+servers using e.g. ZEO, you must also ensure that your load-balancer
+supports session affinity (so a specific client always hits the same
+back end server).  This somewhat reduces the performance benefits of
+clustering.
+
 
 Changes
 =======
