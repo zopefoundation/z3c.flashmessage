@@ -5,6 +5,7 @@
 """Flash message interfaces"""
 
 import zope.interface
+import zope.schema
 
 
 class IMessage(zope.interface.Interface):
