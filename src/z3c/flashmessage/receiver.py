@@ -1,5 +1,5 @@
 # -*- coding: latin-1 -*-
-# Copyright (c) 2007 gocept gmbh & co. kg
+# Copyright (c) 2007 Zope Foundation and Contributors
 # See also LICENSE.txt
 # $Id$
 """A global message receiver that covers all sources."""

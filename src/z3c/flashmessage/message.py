@@ -1,5 +1,5 @@
 # -*- coding: latin-1 -*-
-# Copyright (c) 2007 Infrae, gocept gmbh & co. kg and Contributors
+# Copyright (c) 2007 Zope Foundation and Contributors
 # See also LICENSE.txt
 # $Id$
 """A simple message that can be displayed."""
