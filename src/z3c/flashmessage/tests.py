@@ -4,18 +4,14 @@
 # $Id$
 """Test harness"""
 
-import unittest
 import doctest
-import os
-
-from zope.app.testing.functional import FunctionalDocFileSuite, ZCMLLayer
-import zope.security.management
+import z3c.flashmessage
+import zope.app.wsgi.testlayer
 import zope.publisher.browser
+import zope.security.management
 
 
-FlashMessageLayer = ZCMLLayer(
-    os.path.join(os.path.dirname(__file__), 'ftesting.zcml'),
-    __name__, 'FlashMessageLayer', allow_teardown=True)
+FlashMessageLayer = zope.app.wsgi.testlayer.BrowserLayer(z3c.flashmessage)
 
 
 def setUp(test):
@@ -24,15 +20,11 @@ def setUp(test):
     interaction = zope.security.management.getInteraction()
     interaction.add(request)
 
-def tearDown(test):
-    pass
 
 def test_suite():
-    suite = unittest.TestSuite()
-    test = FunctionalDocFileSuite('README.txt',
-                                  optionflags=doctest.ELLIPSIS,
-                                  setUp=setUp,
-                                  tearDown=tearDown)
-    test.layer = FlashMessageLayer
-    suite.addTest(test)
+    suite = doctest.DocFileSuite(
+        'README.txt',
+        optionflags=doctest.ELLIPSIS,
+        setUp=setUp)
+    suite.layer = FlashMessageLayer
     return suite

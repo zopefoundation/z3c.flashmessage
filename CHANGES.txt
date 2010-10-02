@@ -1,21 +1,27 @@
-
 =======
 CHANGES
 =======
 
 1.1 (unreleased)
-----------------
+================
 
-* ...
+* Removed test dependency on `zope.app.testing`.
+
 
 1.0 (2007-12-06)
-----------------
+================
 
-* Updated dependency to zope.session instead of zope.app.session to get rid of
+* Updated dependency to `zope.session` instead of `zope.app.session` to get rid of
   deprecation warnings.
 
 
-Before 1.0
-----------
+1.0b2 (2007-09-12)
+==================
 
-No changes were tracked.
+* Bugfix: When there was more than one message in a source not all messages
+  would be returned by the receiver.
+
+1.0b1 (2007-08-22)
+==================
+
+* Initial public release.
