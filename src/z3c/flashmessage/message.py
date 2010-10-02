@@ -5,9 +5,9 @@
 """A simple message that can be displayed."""
 
 import persistent
+import z3c.flashmessage.interfaces
 import zope.interface
 
-import z3c.flashmessage.interfaces
 
 class BaseMessage(persistent.Persistent):
     """A message that is displayed to the user.
