@@ -27,11 +27,11 @@ setup(
     install_requires = ['setuptools',
                         'ZODB3',
                         'zope.interface',
-                        'zope.component',
-                        'zope.session',
-                        'zope.security'],
+                        'zope.schema',
+                        'zope.session'],
     extras_require=dict(test=[
-        'zope.app.zcmlfiles',
-        'zope.testing',
-        ])
+        'zope.publisher',
+        'zope.component',
+        'zope.security',
+        'zope.app.wsgi'])
 )
