@@ -2,7 +2,7 @@
 CHANGES
 =======
 
-1.2 (unreleased)
+1.2 (2010-10-19)
 ================
 
 * Removed test dependency on zope.app.zcmlfiles.
