@@ -18,7 +18,8 @@ class ListBasedMessageSource(object):
     """An (abstract) base class that stores messages
     in a list.
 
-    Sub-classes have to define the attribute `_storage`.
+    Sub-classes have to define the method
+    `_get_storage(self, for_write=False)`.
 
     """
 
@@ -31,35 +32,58 @@ class ListBasedMessageSource(object):
             # message for him. This is allowed by the API for convenience.
             message = z3c.flashmessage.message.Message(message, type=type)
         message.source = self
-        self._storage.append(message)
+        self._get_storage(for_write=True).append(message)
 
     def list(self, type=None):
         """Return all messages of the given type from this source."""
-        for message in self._storage:
+        for message in self._get_storage(for_write=False):
             if type is None or message.type == type:
                 yield message
 
     def delete(self, message):
         """Remove the given message from the source."""
-        self._storage.remove(message)
+        self._get_storage(for_write=True).remove(message)
+
+    def _get_storage(self, for_write=False):
+        """Return the storage which must have a list API.
+
+        When `for_write` is True the caller want's to write to the storage.
+
+        To be implemented in concreate sub classes
+
+        """
 
 
 class SessionMessageSource(ListBasedMessageSource):
+    """Source which stores its data in the session of the user."""
 
-    @property
-    def _storage(self):
+    _pkg_id = 'z3c.flashmessage'
+
+    def _get_storage(self, for_write=False):
         request = zope.security.management.getInteraction().participations[0]
-        session = zope.session.interfaces.ISession(
-            request)['z3c.flashmessage']
-        messages = session.setdefault('messages',
-                                      persistent.list.PersistentList())
-        return messages
+        session = zope.session.interfaces.ISession(request)
+        if for_write:
+            # Creating a new session when it does not exist yet.
+            session_data = session[self._pkg_id]
+        else:
+            # Making sure we do *not* create a new session when it not exists:
+            session_data = session.get(self._pkg_id, {})
+        return session_data.setdefault('messages',
+                                       persistent.list.PersistentList())
 
 
 class RAMMessageSource(ListBasedMessageSource):
+    """Source which stores its data in RAM.
+
+    Caution: This source is not able to store messages for individual users.
+
+    """
 
     zope.interface.implements(z3c.flashmessage.interfaces.IMessageSource)
 
     def __init__(self):
         super(RAMMessageSource, self).__init__()
         self._storage = []
+
+    def _get_storage(self, for_write=False):
+        return self._storage

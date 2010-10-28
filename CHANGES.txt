@@ -5,13 +5,14 @@ CHANGES
 1.3 (unreleased)
 ================
 
-- Nothing changed yet.
-
+- ``SessionMessageSource`` implicitly created sessions when the client was
+  reading the messages from the source. Changed internal API so reading no
+  longer creates a session when it not yet exists.
 
 1.2 (2010-10-19)
 ================
 
-* Removed test dependency on zope.app.zcmlfiles.
+* Removed test dependency on `zope.app.zcmlfiles`.
 
 
 1.1 (2010-10-02)
@@ -23,8 +24,8 @@ CHANGES
 1.0 (2007-12-06)
 ================
 
-* Updated dependency to `zope.session` instead of `zope.app.session` to get rid of
-  deprecation warnings.
+* Updated dependency to `zope.session` instead of `zope.app.session` to get
+  rid of deprecation warnings.
 
 
 1.0b2 (2007-09-12)
