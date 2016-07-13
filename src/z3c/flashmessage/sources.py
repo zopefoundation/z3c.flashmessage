@@ -4,6 +4,7 @@
 # $Id$
 """A message source that stores messages in the session."""
 
+from __future__ import unicode_literals
 import zope.interface
 
 import zope.session.interfaces
@@ -14,6 +15,7 @@ import z3c.flashmessage.interfaces
 import z3c.flashmessage.message
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessageSource)
 class ListBasedMessageSource(object):
     """An (abstract) base class that stores messages
     in a list.
@@ -23,9 +25,7 @@ class ListBasedMessageSource(object):
 
     """
 
-    zope.interface.implements(z3c.flashmessage.interfaces.IMessageSource)
-
-    def send(self, message, type=u"message"):
+    def send(self, message, type="message"):
         """Send a message to this source."""
         if not z3c.flashmessage.interfaces.IMessage.providedBy(message):
             # The programmer has passed in not a message, so we create a
@@ -72,14 +72,13 @@ class SessionMessageSource(ListBasedMessageSource):
                                        persistent.list.PersistentList())
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessageSource)
 class RAMMessageSource(ListBasedMessageSource):
     """Source which stores its data in RAM.
 
     Caution: This source is not able to store messages for individual users.
 
     """
-
-    zope.interface.implements(z3c.flashmessage.interfaces.IMessageSource)
 
     def __init__(self):
         super(RAMMessageSource, self).__init__()

@@ -4,11 +4,13 @@
 # $Id$
 """A simple message that can be displayed."""
 
+from __future__ import unicode_literals
 import persistent
 import z3c.flashmessage.interfaces
 import zope.interface
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessage)
 class BaseMessage(persistent.Persistent):
     """A message that is displayed to the user.
 
@@ -16,9 +18,7 @@ class BaseMessage(persistent.Persistent):
 
     """
 
-    zope.interface.implements(z3c.flashmessage.interfaces.IMessage)
-
-    def __init__(self, message, type=u"message"):
+    def __init__(self, message, type="message"):
         self.message = message
         self.type = type
 

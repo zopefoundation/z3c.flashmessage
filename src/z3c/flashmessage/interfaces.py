@@ -4,6 +4,7 @@
 # $Id$
 """Flash message interfaces"""
 
+from __future__ import unicode_literals
 import zope.interface
 import zope.schema
 
@@ -11,10 +12,10 @@ import zope.schema
 class IMessage(zope.interface.Interface):
     """A message that can be displayed to the user."""
 
-    message = zope.schema.TextLine(title=u"The message itself.")
+    message = zope.schema.TextLine(title="The message itself.")
 
-    type = zope.schema.TextLine(title=u"A classifier for the message",
-                                default=u"message")
+    type = zope.schema.TextLine(title="A classifier for the message",
+                                default="message")
 
     def prepare(source):
         """Prepare for being received.
@@ -32,7 +33,7 @@ class IMessage(zope.interface.Interface):
 
 class IMessageSource(zope.interface.Interface):
 
-    def send(message, type=u"message"):
+    def send(message, type="message"):
         """Send a message to this source.
 
         Message can either be a unicode string or an IMessage object.

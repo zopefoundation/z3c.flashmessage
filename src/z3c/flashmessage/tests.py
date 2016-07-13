@@ -11,7 +11,8 @@ import zope.publisher.browser
 import zope.security.management
 
 
-FlashMessageLayer = zope.app.wsgi.testlayer.BrowserLayer(z3c.flashmessage)
+FlashMessageLayer = zope.app.wsgi.testlayer.BrowserLayer(
+    z3c.flashmessage, allowTearDown=True)
 
 
 def setUp(test):
