@@ -1,10 +1,13 @@
 language: python
 python:
     - 2.7
+    - 3.3
+    - 3.4
+    - 3.5
+sudo: false
 install:
-    - python bootstrap.py
-    - bin/buildout
+    - pip install tox-travis
 script:
-    - bin/test -v1
+    - tox
 notifications:
     email: false

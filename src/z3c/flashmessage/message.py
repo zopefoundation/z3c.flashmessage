@@ -9,14 +9,13 @@ import z3c.flashmessage.interfaces
 import zope.interface
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessage)
 class BaseMessage(persistent.Persistent):
     """A message that is displayed to the user.
 
     An (abstract) base class.
 
     """
-
-    zope.interface.implements(z3c.flashmessage.interfaces.IMessage)
 
     def __init__(self, message, type=u"message"):
         self.message = message

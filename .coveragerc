@@ -1,0 +1,19 @@
+[run]
+branch = True
+source = z3c.flashmessage
+
+[report]
+precision = 2
+omit = */interfaces.py
+       */interfaces/*
+       */tests.py
+       */tests/*
+
+[html]
+directory = htmlcov
+
+[paths]
+source =
+   src/z3c/flashmessage
+   .tox/*/lib/python*/site-packages/z3c/flashmessage
+   .tox/pypy*/site-packages/z3c/flashmessage

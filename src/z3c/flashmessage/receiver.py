@@ -9,9 +9,8 @@ import zope.interface
 import z3c.flashmessage.interfaces
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessageReceiver)
 class GlobalMessageReceiver(object):
-
-    zope.interface.implements(z3c.flashmessage.interfaces.IMessageReceiver)
 
     def receive(self, type=None):
         sources = zope.component.getAllUtilitiesRegisteredFor(

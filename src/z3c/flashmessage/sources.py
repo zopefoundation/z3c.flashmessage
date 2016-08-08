@@ -14,6 +14,7 @@ import z3c.flashmessage.interfaces
 import z3c.flashmessage.message
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessageSource)
 class ListBasedMessageSource(object):
     """An (abstract) base class that stores messages
     in a list.
@@ -22,8 +23,6 @@ class ListBasedMessageSource(object):
     `_get_storage(self, for_write=False)`.
 
     """
-
-    zope.interface.implements(z3c.flashmessage.interfaces.IMessageSource)
 
     def send(self, message, type=u"message"):
         """Send a message to this source."""
@@ -72,14 +71,13 @@ class SessionMessageSource(ListBasedMessageSource):
                                        persistent.list.PersistentList())
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessageSource)
 class RAMMessageSource(ListBasedMessageSource):
     """Source which stores its data in RAM.
 
     Caution: This source is not able to store messages for individual users.
 
     """
-
-    zope.interface.implements(z3c.flashmessage.interfaces.IMessageSource)
 
     def __init__(self):
         super(RAMMessageSource, self).__init__()

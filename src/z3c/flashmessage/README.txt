@@ -12,9 +12,10 @@ To send a message to the current user, you can use the session-based message
 source. Let's set one up:
 
 >>> from z3c.flashmessage.sources import SessionMessageSource
+>>> from __future__ import unicode_literals
 >>> source = SessionMessageSource()
 
->>> source.send(u'The world will come to an end in 40 seconds!')
+>>> source.send('The world will come to an end in 40 seconds!')
 
 The source allows to list all current messages:
 
@@ -22,9 +23,9 @@ The source allows to list all current messages:
 >>> m
 [<z3c.flashmessage.message.Message object at 0x...>]
 >>> m[0].message
-u'The world will come to an end in 40 seconds!'
->>> m[0].type
-u'message'
+'The world will come to an end in 40 seconds!'
+>>> str(m[0].type)
+'message'
 
 Receiving messages
 ==================
@@ -41,10 +42,10 @@ There also is another default message that does not delete itself when being
 read:
 
 >>> from z3c.flashmessage.message import PersistentMessage
->>> source.send(PersistentMessage(u'I will stay forever!'))
+>>> source.send(PersistentMessage('I will stay forever!'))
 >>> m = list(source.list())[0]
 >>> m.message
-u'I will stay forever!'
+'I will stay forever!'
 >>> m.prepare(source)
 >>> list(source.list())
 [<z3c.flashmessage.message.PersistentMessage object at 0x...>]
@@ -57,13 +58,13 @@ utilities. Let's set up a session message source as a utility:
 
 >>> from zope.component import provideUtility
 >>> provideUtility(source)
->>> source.send(u'Test!')
+>>> source.send('Test!')
 
 >>> from z3c.flashmessage.sources import RAMMessageSource
 >>> source2 = RAMMessageSource()
 >>> provideUtility(source2, name='other')
->>> source2.send(u'Test 2!')
->>> source2.send(u'Test 3!')
+>>> source2.send('Test 2!')
+>>> source2.send('Test 3!')
 
 >>> from z3c.flashmessage.receiver import GlobalMessageReceiver
 >>> receiver = GlobalMessageReceiver()
@@ -71,13 +72,13 @@ utilities. Let's set up a session message source as a utility:
 >>> len(m)
 4
 >>> m[0].message
-u'I will stay forever!'
+'I will stay forever!'
 >>> m[1].message
-u'Test!'
+'Test!'
 >>> m[2].message
-u'Test 2!'
+'Test 2!'
 >>> m[3].message
-u'Test 3!'
+'Test 3!'
 
 After the receiver handed out the messages, they are gone from the
 sources, because the receiver notifies the messages that they were
@@ -95,7 +96,7 @@ see. If we don't give a type, then all messages are returned. The default type
 of a message is `message`:
 
 >>> source3 = RAMMessageSource()
->>> source3.send(u'Test 2!')
+>>> source3.send('Test 2!')
 >>> list(source3.list())
 [<z3c.flashmessage.message.Message object at 0x...>]
 >>> list(source3.list('message'))
