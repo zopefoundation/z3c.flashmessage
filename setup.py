@@ -25,7 +25,7 @@ setup(
         read('src', 'z3c', 'flashmessage', 'README.txt') +
         read('CHANGES.txt')
     ),
-    url='http://pypi.python.org/pypi/z3c.flashmessage/',
+    url='https://github.com/zopefoundation/z3c.flashmessage',
     license="ZPL 2.1",
     keywords="zope3 message zope session",
     classifiers=[
