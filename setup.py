@@ -3,13 +3,14 @@ from setuptools import setup, find_packages
 
 
 def read(*path_elements):
-    return "\n\n" + open(os.path.join(*path_elements), 'rt').read()
+    with open(os.path.join(*path_elements), 'rt') as f:
+        return "\n\n" + f.read()
 
 TEST_REQUIREMENTS = [
     'zope.publisher',
     'zope.component',
     'zope.security',
-    'zope.app.wsgi[testlayer] >= 4.0.0a4',
+    'zope.app.wsgi[testlayer] >= 4.0',
     'Webtest',
 ]
 
@@ -17,7 +18,7 @@ setup(
     name="z3c.flashmessage",
     version='1.4dev',
     author="Jasper Op de Coul, Christian Theune",
-    author_email="jasper@infrae.com, ct@gocept.com",
+    author_email="jasper@infrae.com, mail@gocept.com",
     description="A package for sending `flash messages` to users.",
     long_description=(
         '.. contents::\n\n' +
@@ -49,7 +50,7 @@ setup(
     namespace_packages=['z3c'],
     install_requires=[
         'setuptools',
-        'ZODB3',
+        'ZODB',
         'zope.interface',
         'zope.schema',
         'zope.session'
