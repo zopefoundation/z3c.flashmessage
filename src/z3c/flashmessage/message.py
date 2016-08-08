@@ -4,7 +4,6 @@
 # $Id$
 """A simple message that can be displayed."""
 
-from __future__ import unicode_literals
 import persistent
 import z3c.flashmessage.interfaces
 import zope.interface
@@ -18,7 +17,7 @@ class BaseMessage(persistent.Persistent):
 
     """
 
-    def __init__(self, message, type="message"):
+    def __init__(self, message, type=u"message"):
         self.message = message
         self.type = type
 

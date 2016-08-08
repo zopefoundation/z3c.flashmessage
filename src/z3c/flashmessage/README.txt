@@ -24,11 +24,7 @@ The source allows to list all current messages:
 [<z3c.flashmessage.message.Message object at 0x...>]
 >>> m[0].message
 'The world will come to an end in 40 seconds!'
->>> import sys
->>> if sys.version_info < (3, 0):
-...     m[0].type.encode('utf-8')
-... else:
-...     m[0].type
+>>> str(m[0].type)
 'message'
 
 Receiving messages

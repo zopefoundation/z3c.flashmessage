@@ -4,7 +4,6 @@
 # $Id$
 """A message source that stores messages in the session."""
 
-from __future__ import unicode_literals
 import zope.interface
 
 import zope.session.interfaces
@@ -25,7 +24,7 @@ class ListBasedMessageSource(object):
 
     """
 
-    def send(self, message, type="message"):
+    def send(self, message, type=u"message"):
         """Send a message to this source."""
         if not z3c.flashmessage.interfaces.IMessage.providedBy(message):
             # The programmer has passed in not a message, so we create a
