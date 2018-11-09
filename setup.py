@@ -10,6 +10,7 @@ TEST_REQUIREMENTS = [
     'zope.publisher',
     'zope.component',
     'zope.security',
+    'zope.testrunner',
     'zope.app.wsgi[testlayer] >= 4.0',
     'Webtest',
 ]
@@ -35,9 +36,12 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Topic :: Internet :: WWW/HTTP',
@@ -58,9 +62,6 @@ setup(
     extras_require=dict(test=TEST_REQUIREMENTS),
     setup_requires=[
         'eggtestinfo',  # captures testing metadata in EGG-INFO
-        'zope.testrunner'
     ],
     tests_require=TEST_REQUIREMENTS,
-    test_suite='z3c.flashmessage.tests.test_suite',
-    test_loader='zope.testrunner.eggsupport:SkipLayers',
 )

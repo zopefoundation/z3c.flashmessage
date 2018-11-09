@@ -5,7 +5,9 @@ CHANGES
 2.1 (unreleased)
 ================
 
-- Nothing changed yet.
+- Claim support for Python 3.6, 3.7, PyPy and PyPy3.
+
+- Drop support for Python 3.3.
 
 
 2.0 (2016-08-08)
