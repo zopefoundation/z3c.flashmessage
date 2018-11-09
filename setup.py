@@ -23,7 +23,7 @@ setup(
     long_description=(
         '.. contents::\n\n' +
         read('src', 'z3c', 'flashmessage', 'README.txt') +
-        read('CHANGES.txt')
+        read('CHANGES.rst')
     ),
     url='https://github.com/zopefoundation/z3c.flashmessage',
     license="ZPL 2.1",

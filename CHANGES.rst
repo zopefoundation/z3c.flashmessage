@@ -11,7 +11,7 @@ CHANGES
 2.0 (2016-08-08)
 ================
 
-- Standardize namespace __init__
+- Standardize namespace ``__init__``.
 
 - Claim compatibility for Python 3.3, 3.4, and 3.5.
 
