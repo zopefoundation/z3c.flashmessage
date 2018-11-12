@@ -24,7 +24,7 @@ def setUp(test):
 
 def test_suite():
     suite = doctest.DocFileSuite(
-        'README.txt',
+        'README.rst',
         optionflags=doctest.ELLIPSIS,
         setUp=setUp)
     suite.layer = FlashMessageLayer
