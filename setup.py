@@ -23,7 +23,7 @@ setup(
     description="A package for sending `flash messages` to users.",
     long_description=(
         '.. contents::\n\n' +
-        read('src', 'z3c', 'flashmessage', 'README.txt') +
+        read('src', 'z3c', 'flashmessage', 'README.rst') +
         read('CHANGES.rst')
     ),
     url='https://github.com/zopefoundation/z3c.flashmessage',
