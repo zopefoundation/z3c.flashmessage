@@ -60,8 +60,4 @@ setup(
         'zope.session'
     ],
     extras_require=dict(test=TEST_REQUIREMENTS),
-    setup_requires=[
-        'eggtestinfo',  # captures testing metadata in EGG-INFO
-    ],
-    tests_require=TEST_REQUIREMENTS,
 )
