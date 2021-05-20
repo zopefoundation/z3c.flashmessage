@@ -9,6 +9,7 @@ CHANGES
 
 - Drop support for Python 3.4.
 
+- Ensure all objects have consistent resolution orders.
 
 2.1 (2018-11-12)
 ================

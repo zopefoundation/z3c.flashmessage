@@ -71,7 +71,6 @@ class SessionMessageSource(ListBasedMessageSource):
                                        persistent.list.PersistentList())
 
 
-@zope.interface.implementer(z3c.flashmessage.interfaces.IMessageSource)
 class RAMMessageSource(ListBasedMessageSource):
     """Source which stores its data in RAM.
 
