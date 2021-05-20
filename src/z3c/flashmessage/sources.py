@@ -53,6 +53,7 @@ class ListBasedMessageSource(object):
         """
 
 
+@zope.interface.implementer(z3c.flashmessage.interfaces.IMessageSource)
 class SessionMessageSource(ListBasedMessageSource):
     """Source which stores its data in the session of the user."""
 
