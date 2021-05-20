@@ -6,6 +6,7 @@ def read(*path_elements):
     with open(os.path.join(*path_elements), 'rt') as f:
         return "\n\n" + f.read()
 
+
 TEST_REQUIREMENTS = [
     'zope.publisher',
     'zope.component',
@@ -40,6 +41,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Natural Language :: English',
