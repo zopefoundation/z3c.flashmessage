@@ -5,10 +5,12 @@
 """Test harness"""
 
 import doctest
-import z3c.flashmessage
+
 import zope.app.wsgi.testlayer
 import zope.publisher.browser
 import zope.security.management
+
+import z3c.flashmessage
 
 
 FlashMessageLayer = zope.app.wsgi.testlayer.BrowserLayer(

@@ -4,11 +4,9 @@
 # $Id$
 """A message source that stores messages in the session."""
 
-import zope.interface
-
-import zope.session.interfaces
-
 import persistent.list
+import zope.interface
+import zope.session.interfaces
 
 import z3c.flashmessage.interfaces
 import z3c.flashmessage.message

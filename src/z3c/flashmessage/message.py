@@ -5,8 +5,9 @@
 """A simple message that can be displayed."""
 
 import persistent
-import z3c.flashmessage.interfaces
 import zope.interface
+
+import z3c.flashmessage.interfaces
 
 
 @zope.interface.implementer(z3c.flashmessage.interfaces.IMessage)
