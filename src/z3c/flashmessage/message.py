@@ -1,4 +1,3 @@
-# -*- coding: latin-1 -*-
 # Copyright (c) 2007 Zope Foundation and Contributors
 # See also LICENSE.txt
 # $Id$
@@ -18,7 +17,7 @@ class BaseMessage(persistent.Persistent):
 
     """
 
-    def __init__(self, message, type=u"message"):
+    def __init__(self, message, type="message"):
         self.message = message
         self.type = type
 

@@ -5,7 +5,7 @@ from setuptools import setup
 
 
 def read(*path_elements):
-    with open(os.path.join(*path_elements), 'rt') as f:
+    with open(os.path.join(*path_elements)) as f:
         return "\n\n" + f.read()
 
 
@@ -54,6 +54,7 @@ setup(
     include_package_data=True,
     package_dir={'': 'src'},
     namespace_packages=['z3c'],
+    python_requires='>=3.7',
     install_requires=[
         'setuptools',
         'ZODB',

@@ -1,4 +1,3 @@
-# -*- coding: latin-1 -*-
 # Copyright (c) 2007 Zope Foundation and Contributors
 # See also LICENSE.txt
 # $Id$
@@ -13,7 +12,7 @@ import z3c.flashmessage.message
 
 
 @zope.interface.implementer(z3c.flashmessage.interfaces.IMessageSource)
-class ListBasedMessageSource(object):
+class ListBasedMessageSource:
     """An (abstract) base class that stores messages
     in a list.
 
@@ -22,7 +21,7 @@ class ListBasedMessageSource(object):
 
     """
 
-    def send(self, message, type=u"message"):
+    def send(self, message, type="message"):
         """Send a message to this source."""
         if not z3c.flashmessage.interfaces.IMessage.providedBy(message):
             # The programmer has passed in not a message, so we create a
@@ -77,7 +76,7 @@ class RAMMessageSource(ListBasedMessageSource):
     """
 
     def __init__(self):
-        super(RAMMessageSource, self).__init__()
+        super().__init__()
         self._storage = []
 
     def _get_storage(self, for_write=False):
