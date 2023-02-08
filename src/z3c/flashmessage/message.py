@@ -1,12 +1,12 @@
-# -*- coding: latin-1 -*-
 # Copyright (c) 2007 Zope Foundation and Contributors
 # See also LICENSE.txt
 # $Id$
 """A simple message that can be displayed."""
 
 import persistent
-import z3c.flashmessage.interfaces
 import zope.interface
+
+import z3c.flashmessage.interfaces
 
 
 @zope.interface.implementer(z3c.flashmessage.interfaces.IMessage)
@@ -17,7 +17,7 @@ class BaseMessage(persistent.Persistent):
 
     """
 
-    def __init__(self, message, type=u"message"):
+    def __init__(self, message, type="message"):
         self.message = message
         self.type = type
 

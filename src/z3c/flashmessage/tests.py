@@ -1,14 +1,15 @@
-# -*- coding: latin-1 -*-
 # Copyright (c) 2007 Zope Foundation and Contributors
 # See also LICENSE.txt
 # $Id$
 """Test harness"""
 
 import doctest
-import z3c.flashmessage
+
 import zope.app.wsgi.testlayer
 import zope.publisher.browser
 import zope.security.management
+
+import z3c.flashmessage
 
 
 FlashMessageLayer = zope.app.wsgi.testlayer.BrowserLayer(

@@ -1,4 +1,3 @@
-# -*- coding: latin-1 -*-
 # Copyright (c) 2007 Zope Foundation and Contributors
 # See also LICENSE.txt
 # $Id$
@@ -10,7 +9,7 @@ import z3c.flashmessage.interfaces
 
 
 @zope.interface.implementer(z3c.flashmessage.interfaces.IMessageReceiver)
-class GlobalMessageReceiver(object):
+class GlobalMessageReceiver:
 
     def receive(self, type=None):
         sources = zope.component.getAllUtilitiesRegisteredFor(
