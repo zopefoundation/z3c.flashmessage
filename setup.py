@@ -20,7 +20,7 @@ TEST_REQUIREMENTS = [
 
 setup(
     name="z3c.flashmessage",
-    version='3.2.dev0',
+    version='4.0.dev0',
     author="Jasper Op de Coul, Christian Theune",
     author_email="jasper@infrae.com, mail@gocept.com",
     description="A package for sending `flash messages` to users.",
