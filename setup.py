@@ -1,6 +1,5 @@
 import os.path
 
-from setuptools import find_packages
 from setuptools import setup
 
 
@@ -13,7 +12,7 @@ TEST_REQUIREMENTS = [
     'zope.publisher',
     'zope.component',
     'zope.security',
-    'zope.testrunner',
+    'zope.testrunner >= 6.4',
     'zope.app.wsgi[testlayer] >= 4.0',
     'Webtest',
 ]
@@ -50,10 +49,7 @@ setup(
         'Framework :: Zope :: 3',
     ],
     zip_safe=False,
-    packages=find_packages('src'),
     include_package_data=True,
-    package_dir={'': 'src'},
-    namespace_packages=['z3c'],
     python_requires='>=3.9',
     install_requires=[
         'setuptools',
