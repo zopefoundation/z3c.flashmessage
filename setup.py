@@ -1,6 +1,5 @@
 import os.path
 
-from setuptools import find_packages
 from setuptools import setup
 
 
@@ -13,14 +12,14 @@ TEST_REQUIREMENTS = [
     'zope.publisher',
     'zope.component',
     'zope.security',
-    'zope.testrunner',
+    'zope.testrunner >= 6.4',
     'zope.app.wsgi[testlayer] >= 4.0',
     'Webtest',
 ]
 
 setup(
     name="z3c.flashmessage",
-    version='3.2.dev0',
+    version='4.0.dev0',
     author="Jasper Op de Coul, Christian Theune",
     author_email="jasper@infrae.com, mail@gocept.com",
     description="A package for sending `flash messages` to users.",
@@ -50,10 +49,7 @@ setup(
         'Framework :: Zope :: 3',
     ],
     zip_safe=False,
-    packages=find_packages('src'),
     include_package_data=True,
-    package_dir={'': 'src'},
-    namespace_packages=['z3c'],
     python_requires='>=3.9',
     install_requires=[
         'setuptools',
