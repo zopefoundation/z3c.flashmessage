@@ -7,6 +7,51 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
+
+[project]
+name = "z3c.flashmessage"
+version = "4.1.dev0"
+description = "A package for sending `flash messages` to users."
+license = "ZPL-2.1"
+classifiers = [
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Internet :: WWW/HTTP",
+    "Framework :: Zope :: 3",
+]
+dynamic = ["readme"]
+requires-python = ">=3.11"
+authors = [
+    {name = "Jasper Op de Coul", email = "jasper@infrae.com"},
+    {name = "Christian Theune", email = "mail@gocept.com"},
+]
+maintainers = [
+    {name = "Plone Foundation and contributors",email = "zope-dev@zope.dev"},
+]
+dependencies = [
+    "setuptools",
+    "ZODB",
+    "zope.interface",
+    "zope.schema",
+    "zope.session",
+]
+keywords = ["zope3", "message", "zope", "session"]
+
+[project.urls]
+Source = "https://github.com/zopefoundation/z3c.flashmessage"
+Issues = "https://github.com/zopefoundation/z3c.flashmessage/issues"
+Changelog = "https://raw.githubusercontent.com/zopefoundation/z3c.flashmessage/master/CHANGES.rst"
+
 [tool.coverage.run]
 branch = true
 source = ["z3c.flashmessage"]
@@ -29,3 +74,6 @@ exclude_lines = [
 
 [tool.coverage.html]
 directory = "parts/htmlcov"
+
+[tool.setuptools.dynamic]
+readme = {file = ["src/z3c/flashmessage/README.rst", "CHANGES.rst"]}
