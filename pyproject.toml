@@ -7,7 +7,6 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
-
 [project]
 name = "z3c.flashmessage"
 version = "4.1.dev0"
@@ -46,6 +45,16 @@ dependencies = [
     "zope.session",
 ]
 keywords = ["zope3", "message", "zope", "session"]
+[project.optional-dependencies]
+test = [
+    "zope.publisher",
+    "zope.component",
+    "zope.security",
+    "zope.testrunner >= 6.4",
+    "zope.app.wsgi[testlayer] >= 4.0",
+    "Webtest",
+]
+
 
 [project.urls]
 Source = "https://github.com/zopefoundation/z3c.flashmessage"
@@ -77,3 +86,8 @@ directory = "parts/htmlcov"
 
 [tool.setuptools.dynamic]
 readme = {file = ["src/z3c/flashmessage/README.rst", "CHANGES.rst"]}
+
+[tool.zest-releaser]
+create-wheel = false
+extra-message = ""
+upload-pypi = false
