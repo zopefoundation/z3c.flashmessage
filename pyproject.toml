@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "z3c.flashmessage"
-version = "4.1.dev0"
+version = "4.1"
 description = "A package for sending `flash messages` to users."
 license = "ZPL-2.1"
 classifiers = [
